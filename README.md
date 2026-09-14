@@ -1,30 +1,17 @@
-# PTRANSIT 
-This project aims to provide schedules and real-time updates for most public transit modes in the Lisbon metropolitan area, joining the miscellaneous information provided by the different operators into a single, unified API.
+# PTRANSIT 🚌🚇
+This project aims to provide schedules and real-time updates for most public transit modes in the Lisbon metropolitan area (list of supported operators available [here](#currently-supported-operators)).
 
 While most operators provide information about schedules, stops and lines using the widely adopted [GTFS](https://gtfs.org/) standard, only some provide real-time updates using [GTFS Realtime](https://gtfs.org/documentation/realtime/reference/) (Carris Metropolitana and Carris)
 
 The remainder operators either use internally designed APIs (Metro de Lisboa, CP) or provide no real-time information at all (Fertagus and Metro Sul do Tejo)
 
-The project features: 
-- A unified API that provides schedules and real-time updates for most public transit modes in the Lisbon metropolitan area.
-- A web application that allows users to view schedules and real-time updates for public transit in Lisbon.
+The project is made up of:
+- A unified API that provides schedules and real-time updates for most public transit modes in the Lisbon metropolitan area. Built using TypeScript, Node.js and Express. 
+- A web application centered around a map view that allows users to view schedules and real-time updates for public transit in Lisbon. Built using React, TypeScript and maplibre
+- A tile server (maptiler) that provides the map tiles used in the web application. 
+- A PostgreSQL database instance that stores the static GTFS data (stops, lines, schedules, etc.) from the operators
+- A database population script that downloads the GTFS data from the operators, parses it, corrects it and populates the database with the information.
 
-## Currently supported operators
-
-🟢 Operator provides real-time updates to schedules either through 
-
-🟡 While operator does not provide realtime, we obtain it through indirect means (integration with other services, scraping, etc.), making the information less reliable
-
-🟠 No way to obtain real-time information for this operator
-
-| Operator | Real-time updates | Notes |
-| --- | --- | --- |
-| Metro de Lisboa | 🟢 | Real-time departure times provided through internal API|
-| Carris Metropolitana | 🟢 | Provides real-time updates through GTFS Realtime  + internal API|
-| Carris | 🟢 | Provides real-time updates through GTFS Realtime (vehicle locations), we use information|
-|Comboios Portugal | 🟢 | Real-time updates provided through internal API|
-|Fertagus | 🟡 | Real-time updates obtained from Infraestruturas de Portugal (Rail infrastructure maintainer). Only delays >5min or cancelations are reported. First departures information does not contain real-time information, as requests to IP take 14s to complete (💥) 
-| Metro Sul do Tejo | 🟠 | No real-time information available (shame as delays are not infrequent) |
 
 
 ## Web application - available [here](https://transit.paulico.eu)
@@ -43,6 +30,23 @@ For each departure, the application shows the scheduled departure time, or the r
 
 Since the web app uses React Router, users are able to share links to specific stops or save them as bookmarks for quicker access.
 
+
+## Currently supported operators
+
+🟢 Operator provides real-time updates to schedules either through GTFS Realtime or internal APIs
+
+🟡 While operator does not provide realtime, we obtain it through indirect means (integration with other services, scraping, etc.), making the information less reliable
+
+🟠 No way to obtain real-time information for this operator
+
+| Operator | Real-time updates | Notes |
+| --- | --- | --- |
+| Metro de Lisboa | 🟢 | Real-time departure times provided through internal API|
+| Carris Metropolitana | 🟢 | Provides real-time updates through GTFS Realtime  + internal API|
+| Carris | 🟢 | Provides real-time updates through GTFS Realtime (vehicle locations), we use that information to estimate real-time departure times|
+|Comboios Portugal | 🟢 | Real-time updates provided through internal API|
+|Fertagus | 🟡 | Real-time updates obtained from Infraestruturas de Portugal (Rail infrastructure maintainer). Only delays >5min or cancelations are reported. First departures information does not contain real-time information, as requests to IP take 14s to complete (💥) 
+| Metro Sul do Tejo | 🟠 | No real-time information available (shame as delays are not infrequent) |
 
 ## Roadmap
 - [ ] Adding support for Transtejo-Soflusa (ferries operator), MobiCascais (cascais area bus operator) and TCB (Barreiro area bus operator)
