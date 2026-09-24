@@ -1,20 +1,11 @@
 # PTRANSIT 🚌🚇
 
 
-
-<p style="align: center;">
-    <img src="assets/images/1.png" width="33%" alt="Map view on start" />
-    <p>Map view on start</p>
-  </div>
-  <div style="width: 33%; text-align: center;">
-    <img src="assets/images/2.png" width="100%" />
-    <p>Search for stops</p>
-  </div>
-  <div style="width: 33%; text-align: center;">
-    <img src="assets/images/3.png" width="100%" />
-    <p>Departures for a stop</p>
-  </div>
-</div>
+<p align="center">
+  <img src="assets/images/1.png" width="30%" />
+  <img src="assets/images/2.png" width="30%" />
+  <img src="assets/images/3.png" width="30%" />
+</p>
 
 This project aims to provide schedules and real-time updates for most public transit modes in the Lisbon metropolitan area (list of supported operators available [here](#currently-supported-operators)).
 
