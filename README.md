@@ -1,9 +1,9 @@
 # PTRANSIT 🚌🚇
 
 
-<div style="display: flex; justify-content: space-between; width: 100%;">
-  <div style="width: 33%; text-align: center;">
-    <img src="assets/images/1.png" width="100%" />
+
+<p style="align: center;">
+    <img src="assets/images/1.png" width="33%" alt="Map view on start" />
     <p>Map view on start</p>
   </div>
   <div style="width: 33%; text-align: center;">
