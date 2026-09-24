@@ -7,6 +7,10 @@
   <img src="assets/images/3.png" width="30%" />
 </p>
 
+<p align="center">
+  <em>Map view on start · Search for stops · Departures for a stop</em>
+</p>
+
 This project aims to provide schedules and real-time updates for most public transit modes in the Lisbon metropolitan area (list of supported operators available [here](#currently-supported-operators)).
 
 While most operators provide information about schedules, stops and lines using the widely adopted [GTFS](https://gtfs.org/) standard, only some provide real-time updates using [GTFS Realtime](https://gtfs.org/documentation/realtime/reference/) (Carris Metropolitana and Carris)
