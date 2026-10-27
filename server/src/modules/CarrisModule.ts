@@ -56,8 +56,6 @@ export async function get_departures_stopId(stop_ids: string[], limit: number): 
                 if (stopTimeResult.rows.length > 0 && vehicleInfo.timestamp && Number.isNaN(Number(vehicleInfo.timestamp)) === false) {
                     const timestamp = Number(vehicleInfo.timestamp)
 
-
-                    //TODO: remake time dif to be aware of dates too, imporant when bus is around midnight
                     busStopSequence = vehicleInfo.currentStopSequence!;
 
                     
