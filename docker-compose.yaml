@@ -1,0 +1,54 @@
+services:
+  ptransit-server:
+    container_name: ptransit-server
+    image: ptransit-server
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    env_file:
+    - ptransit_server.env
+    ports:
+    - '3069:3069'
+    restart: unless-stopped
+    depends_on:
+    - ptransit-db
+
+  ptransit-db:
+    container_name: ptransit-db
+    image: postgis/postgis:17-master
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: transit
+    ports:
+    - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  ptransit-db-populator:
+    container_name: ptransit-db-populator
+    image: ptransit-db-populator
+    build:
+      context: db-populator
+      dockerfile: Dockerfile
+    depends_on:
+      ptransit-db:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: password
+      DB_HOST: ptransit-db
+      DB_NAME: transit
+      DB_USER: user
+    
+  ptransit-maptiles:
+    container_name: ptransit-maptiles
+    image: maptiler/tileserver-gl
+    ports:
+      - "5433:8080"
+    volumes:
+      - ./maptiles/:/data
