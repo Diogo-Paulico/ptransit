@@ -56,7 +56,7 @@ export function SearchBar() {
   return (
     // responsive: on small screens use left/right padding to avoid overlapping side drawers;
     // on md+ keep centered with a fixed max width
-    <div ref={wrapperRef} className="absolute top-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-[min(360px,calc(100vw-5rem))] max-w-[90vw] z-[1000]">
+    <div ref={wrapperRef} className="absolute top-4 left-4 right-20 md:left-1/2 md:-translate-x-1/2 md:w-[min(360px,calc(100vw-5rem))] max-w-[90vw] z-[1000]">
       <div className="flex items-center bg-white rounded-full shadow-lg px-4 py-2 gap-2 min-w-0">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 shrink-0">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>

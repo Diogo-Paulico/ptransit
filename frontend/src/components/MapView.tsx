@@ -329,7 +329,7 @@ export function MapView() {
       )
     }
     return createPortal(
-      <button onClick={handleLocate} title="Center on my location" className="absolute bottom-6 right-4 z-[1000] bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 focus:outline-none">
+      <button onClick={handleLocate} title="Center on my location" className="absolute bottom-6 left-4 z-[1000] bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 focus:outline-none">
         {loading ? (
           <span style={{ display: "inline-block", animation: "spin 1s linear infinite" }}>⟳</span>
         ) : (
