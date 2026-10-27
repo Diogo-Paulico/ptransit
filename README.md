@@ -1,7 +1,13 @@
 # PTRANSIT 🚌🚇
 
 
-<p align="center">
+| Map view on start | Search for stops | Depatures for a stop |
+|-------|----|-----|
+|![](/assets/images/1.png) |![](/assets/images/3.png) | ![](/assets/images/2.png) |
+
+
+
+<!-- <p align="center">
   <img src="assets/images/1.png" width="33%" />
   <img src="assets/images/2.png" width="33%" />
   <img src="assets/images/3.png" width="33%" />
@@ -9,7 +15,7 @@
 
 <p align="center">
   <em>Map view on start · Search for stops · Departures for a stop</em>
-</p>
+</p> -->
 
 <p align="center">
   <a href="#self-hosted-deployment">Self-hosted deployment</a> · <a href="#currently-supported-operators">Currently supported operators</a> · <a href="#roadmap">Roadmap</a> · <a href="#disclaimer">Disclaimer</a>
@@ -24,7 +30,7 @@ The remainder operators either use internally designed APIs (Metro de Lisboa, CP
 
 
 The project is made up of:
-- A unified API that provides schedules and real-time updates for most public transit modes in the Lisbon metropolitan area. Built using TypeScript, Node.js and Express. [README](server/README.md)
+- A unified API that provides schedules and real-time updates for most public transit modes in the Lisbon metropolitan area. Built using TypeScript, Node.js and Express. 
 - A web application centred around a map view that allows users to view schedules and real-time updates for public transit in Lisbon. Built using React, TypeScript and maplibre
 - A tile server (maptiler) that provides the map tiles used in the web application. 
 - A PostgreSQL database instance that stores the static GTFS data (stops, lines, schedules, etc.) from the operators
@@ -43,6 +49,16 @@ In order to have departures for Metro de Lisboa working you will need to obtain 
 
 When the frontend is built the web application will try to reach the API and the tile server at localhost:<service_port>. In order to access the web application from another device you will need to set the environment variables in [frontend/.env](frontend/.env) to the IP address or the hostname of the machine running those services.
 
+## Web application
+Map based application that lays out the stops using a colour coding scheme to indicate the stop's operator.
+
+Allows user to search for stops, showing the lines that pass through the stop, simplifying the process of finding the right stop (as many stops in Lisbon have very similar names). Stop listings also have the operator logo before it, helping to address the issue of multiple operators having stops with the same name.
+
+Clicking on a stop, whether on the map or in the search results, shows upcoming departures, including real-time updates when available.
+
+For each departure, the application shows the scheduled departure time, or the real-time updated departure time, if available. When possible, we are able to report whether the vehicle has passed the stop (depature time is stricken through), whether the trip is cancelled (red icon ), the platform where the vehicle is expected to arrive (in case of trains), and the vehicle's expected occupancy level.
+
+Since the web app uses React Router, users are able to share links to specific stops or save them as bookmarks for quicker access.
 
 
 
@@ -71,8 +87,6 @@ When the frontend is built the web application will try to reach the API and the
 - [ ] Routing - allowing users to plan trips from point A to point B, using the public transit network. The routing will take into account the real-time information available, allowing users to plan their trips more accurately.
 
 ## Disclaimer 
-I'm not responsible for any information provided by the operators, and I cannot guarantee that the information is accurate or up-to-date. I created this project for personal use (no i don't want to install 10 apps for 10 different operators, and don't want to pay for a transit app subscription, something that should be free and provided by the operators themselves). I decided to make it public in case it is useful to anyone else.
-
-
+I'm not responsible for any information provided by the operators, and I cannot guarantee that the information is accurate or up-to-date. 
 
 
